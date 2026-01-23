@@ -4,8 +4,15 @@
 
 #include "transaction.h"
 
+#include "../util/date_time.h"
+
 class Transaction {
 private:
-    std::string date;
+    DateTime dateTime;
+    float amount;
+    Category category;
+    Account account;
+    std::string note;
+    std::string description;
 
 };
