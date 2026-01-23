@@ -1,3 +1,4 @@
-cmake_minimum_required(VERSION 4.2)
-project(PocketLog)
-add_executable(pocket_log main.cpp)
+cmake_minimum_required(VERSION 4.1)
+project(PocketLog CXX)
+add_executable(pocket_log
+        main.cpp)
