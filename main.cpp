@@ -1,11 +1,19 @@
+#define CROW_ENABLE_SSL
+
 #include<iostream>
 #include<crow.h>
 #include"util/date_time.h"
 #include"dao/transaction.cpp"
 
+constexpr char SSL_CERT_FILE[] = "../secret/localhost+3.pem";
+constexpr char SSL_CERT_KEY[]("../secret/localhost+3-key.pem");
 constexpr char endl = '\n';
 
+static auto l = crow::logger(crow::LogLevel::INFO);
+
 std::string transactionSimul(bool det);
+
+std::string readFile(std::string const &fileName);
 
 void run_server() {
     crow::App<> app;
@@ -15,15 +23,11 @@ void run_server() {
                     <br/>
                     <a href="/trctf">full transaction details</a>
                     <br/>
-                    <a href="/date">Date</a>)";
+                    <a href="/login">Login</a>)";
     });
 
     CROW_ROUTE(app, "/priyesh")([]() {
         return "<h1> Priyesh Vishwakarma </h1>";
-    });
-
-    CROW_ROUTE(app, "/date")([]() {
-        return "<h1>" + current_time_and_date() + "</h1>";
     });
 
     CROW_ROUTE(app, "/trct")([]() {
@@ -33,9 +37,13 @@ void run_server() {
         return transactionSimul(true);
     });
 
+    CROW_ROUTE(app, "/login")([]() {
+        return readFile("static/login.html");
+    });
+
     app.port(5100)
             .multithreaded()
-            .ssl_file("../localhost+3.pem", "../localhost+3-key.pem")
+            .ssl_file(SSL_CERT_FILE, SSL_CERT_KEY)
             .run();
     return;
 }
@@ -47,8 +55,16 @@ static Transaction t(current_time_and_date().c_str(),
                      TransactionType{EXPENSE}
 );
 
+std::string readFile(std::string const &fileName) {
+    std::ifstream file(fileName);
+    std::stringstream ss;
+    ss << file.rdbuf();
+    std::system("clear");
+    return ss.str();
+}
+
 std::string transactionSimul(bool det = false) {
-    return "<h1>" + ((det) ? t.getTransactionFullDetails() : t.getTransactionDetails()) + "</h1>";
+    return ((det) ? t.getTransactionFullDetails() : t.getTransactionDetails());
 }
 
 int main(int argc, const char *argv[]) {
