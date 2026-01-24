@@ -1,4 +1,3 @@
-#define CROW_ENABLE_SSL
 #include<iostream>
 #include<crow.h>
 #include"util/date_time.h"
@@ -36,7 +35,7 @@ void run_server() {
 
     app.port(5100)
             .multithreaded()
-            .ssl_file("localhost+3.pem", "localhost+3-key.pem")
+            .ssl_file("../localhost+3.pem", "../localhost+3-key.pem")
             .run();
     return;
 }
