@@ -18,10 +18,9 @@ inline std::string current_time_and_date() {
     auto in_time_t = std::chrono::system_clock::to_time_t(now);
 
     std::stringstream ss;
-    ss << std::put_time(std::localtime(&in_time_t),"%Y%m%d%X");
+    ss << std::put_time(std::localtime(&in_time_t), "%Y_%m_%d %X");
     return ss.str();
 }
-
 
 
 class DateTime {
@@ -35,8 +34,9 @@ private:
     // uint8_t second;
 
 public:
-    DateTime(const std::string time = current_time_and_date()) : date_time(time){};
-    ~DateTime(){delete this;};
+    DateTime(const std::string time = current_time_and_date()) : date_time(time) {
+    };
+    ~DateTime() { delete this; };
     // FIXME: Fix the Constructor to getdate and time individual elements
     // DateTime() {
     //     std::stringstream ss;
@@ -59,4 +59,3 @@ public:
     // [[nodiscard]] std::string getMinute() const { return std::to_string(minute); }
     // [[nodiscard]] std::string getSecond() const { return std::to_string(second); }
 };
-
