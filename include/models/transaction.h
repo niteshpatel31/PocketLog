@@ -15,7 +15,7 @@ enum Category { FOOD, GROCERY, SOCIAL_LIFE, BEVERAGES, CLEANING, KITCHEN, STATIO
 enum AccountType { DEBIT_CARD, CREDIT_CARD, UPI, CASH, WALLET };
 
 
-class Account : BaseModel{
+class Account : BaseModel {
 private:
     std::string accountName;
     AccountType accountType;
@@ -32,18 +32,52 @@ public:
     std::string getAccountName();
 
     float getAccountBalance();
+
+    void setAccountBalance(float _balance);
+
+    void setAccountNumber(std::string _accountNumber);
+
+    void setAccountType(std::string _accountType);
+
+    void setAccountName(std::string _accountName);
 };
 
 
-class Transaction {
+class Transaction : BaseModel {
 private:
     TransactionType transactionType;
-    Category category;
-    std::string note;
-    std::string description;
-    Account* account;
-    float amount;
-public:
+    Category transactionCategory;
+    std::string transactionNote;
+    std::string transactionDescription;
+    Account *transactionAccount;
+    float transactionAmount;
 
+public:
+    Transaction(TransactionType _transactionType, Category _category, std::string _note, std::string _description,
+                float _amount, Account *_account);
+
+    TransactionType getTransactionType();
+
+    Category getTransactionCategory();
+
+    std::string getTransactionNote();
+
+    std::string getTransactionDescription();
+
+    float getTransactionAmount();
+
+    Account *getTransactionAccount();
+
+    void setTransactionNote(std::string _note);
+
+    void setTransactionCategory(Category _category);
+
+    void setTransactionDescription(std::string _description);
+
+    void setTransactionAmount(float _amount);
+
+    void setTransactionAccount(Account *_transactionAccount);
+
+    void setTransactionType(TransactionType _transactionType);
 };
 #endif //POCKETLOG_TRANSACTION_H
