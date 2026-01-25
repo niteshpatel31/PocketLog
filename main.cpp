@@ -6,7 +6,7 @@
 #include"dao/transaction.cpp"
 
 constexpr char SSL_CERT_FILE[] = "../secret/localhost+3.pem";
-constexpr char SSL_CERT_KEY[]("../secret/localhost+3-key.pem");
+constexpr char SSL_CERT_KEY[] = "../secret/localhost+3-key.pem";
 constexpr char endl = '\n';
 
 static auto l = crow::logger(crow::LogLevel::INFO);
@@ -38,13 +38,14 @@ void run_server() {
     });
 
     CROW_ROUTE(app, "/login")([]() {
-        return readFile("static/login.html");
+        return readFile("../static/login.html");
     });
 
     app.port(5100)
+            .bindaddr("192.168.1.9")
             .multithreaded()
             .ssl_file(SSL_CERT_FILE, SSL_CERT_KEY)
-            .run();
+            .run_async();
     return;
 }
 
@@ -64,7 +65,7 @@ std::string readFile(std::string const &fileName) {
 }
 
 std::string transactionSimul(bool det = false) {
-    return ((det) ? t.getTransactionFullDetails() : t.getTransactionDetails());
+    return (det) ? t.getTransactionFullDetails() : t.getTransactionDetails();
 }
 
 int main(int argc, const char *argv[]) {

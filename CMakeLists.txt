@@ -9,14 +9,14 @@ find_package(OpenSSL REQUIRED)
 
 add_executable(pocket_log
         main.cpp
-        dao/transaction.cpp
-        dao/transaction.h
-        util/date_time.h
+        include/dao/transaction.cpp
+        include/transaction.h
+        include/util/date_time.h
 )
 
 #target_compile_definitions(pocket_log PRIVATE CROW_ENABLE_SSL)
-target_precompile_headers(pocket_log PRIVATE dao/transaction.h util/date_time.h)
-add_library(transaction dao/transaction.cpp)
+target_precompile_headers(pocket_log PRIVATE include/transaction.h include/util/date_time.h)
+add_library(transaction include/dao/transaction.cpp)
 
 target_link_libraries(pocket_log PRIVATE
         OpenSSL::SSL
