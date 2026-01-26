@@ -36,3 +36,17 @@ void Account::setAccountNumber(std::string _accountNumber) { this->accountNumber
 void Account::setAccountName(std::string _accountName) { this->accountName = _accountName; }
 void Account::setAccountBalance(float _accountBalance) { this->accountBalance = _accountBalance; }
 void Account::setAccountType(AccountType _accountType) { this->accountType = _accountType; }
+
+
+Transaction::Transaction(TransactionType _transactionType, Category _category, std::string _note,
+                         std::string _description, float _amount, Account _account)
+    : transactionType(_transactionType), transactionAccount(_account), transactionCategory(_category),
+      transactionDescription(_note), transactionAmount(_amount), transactionNote() {
+}
+
+Account Transaction::getTransactionAccount() const { return transactionAccount; }
+float Transaction::getTransactionAmount() const { return transactionAmount; }
+std::string Transaction::getTransactionNote() const { return transactionNote; }
+std::string Transaction::getTransactionDescription() const { return transactionDescription; }
+Category Transaction::getTransactionCategory() const { return transactionCategory; }
+TransactionType Transaction::getTransactionType() const { return transactionType; }

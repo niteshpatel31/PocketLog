@@ -51,24 +51,26 @@ private:
     Category transactionCategory;
     std::string transactionNote;
     std::string transactionDescription;
-    Account *transactionAccount;
+    Account transactionAccount;
     float transactionAmount;
 
 public:
+    Transaction() = default;
+
     Transaction(TransactionType _transactionType, Category _category, std::string _note, std::string _description,
-                float _amount, Account *_account);
+                float _amount, Account _account);
 
-    TransactionType getTransactionType();
+    TransactionType getTransactionType() const;
 
-    Category getTransactionCategory();
+    Category getTransactionCategory() const;
 
-    std::string getTransactionNote();
+    std::string getTransactionNote() const;
 
-    std::string getTransactionDescription();
+    std::string getTransactionDescription() const;
 
-    float getTransactionAmount();
+    float getTransactionAmount() const;
 
-    Account *getTransactionAccount();
+    Account getTransactionAccount() const;
 
     void setTransactionNote(std::string _note);
 
