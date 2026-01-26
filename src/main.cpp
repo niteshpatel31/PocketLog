@@ -16,14 +16,13 @@ int main(int argc, char *argv[]) {
     CROW_ROUTE(app, "/")([]() {
         return R"(<h1>Pocket Log</h1>
                 <a href="/account">account</a> <br/>
-                 <a href="transaction">transaction</a> <br/>
+                <a href="transaction">transaction</a> <br/>
 )";
     });
 
     CROW_ROUTE(app, "/account")([account]() {
         return account.getAccountName() + endl +
                account.getAccountNumber() + endl +
-               conversion::anyToStr(account.getAccountBalance()) + endl +
                account.getAccountType() + endl;
     });
 

@@ -17,7 +17,6 @@ add_executable(pocket_log
         include/models/base_model.h
         include/models/category.h
         src/models/base_model.cpp
-        include/utils/conversion.h
         src/utils/DateTimeHelper.cpp
         src/models/user.cpp
 )
