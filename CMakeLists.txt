@@ -10,14 +10,14 @@ find_package(OpenSSL REQUIRED)
 add_executable(pocket_log
         src/main.cpp
         include/models/transaction.h
-        include/utils/DateTimeHelper.h
+        include/utils/time_util.h
         include/models/user.h
         src/config/config.cpp
         src/models/transaction.cpp
         include/models/base_model.h
         include/models/category.h
         src/models/base_model.cpp
-        src/utils/DateTimeHelper.cpp
+        src/utils/time_util.cpp
         src/models/user.cpp
 )
 
