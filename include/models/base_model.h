@@ -8,7 +8,7 @@
 #include <chrono>
 
 class BaseModel {
-private:
+protected:
     uint64_t id;
     std::time_t created_at;
     std::time_t update_at;
@@ -34,9 +34,10 @@ public:
 
     void touch();
 
-    protected:
-        std::string timeToStr(std::time_t _time) const;
-        std::time_t timeFromStr(std::string _time) const;
+protected:
+    static const std::string timeToStr(std::time_t _time);
+
+    static const std::time_t strToTime(std::string _time);
 };
 
 #endif //POCKETLOG_BASE_MODEL_H

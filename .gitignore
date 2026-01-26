@@ -8,7 +8,6 @@
 .externalNativeBuild
 .cxx
 local.properties
-secret/.env
 
 # exposing to local network configs
 /secret

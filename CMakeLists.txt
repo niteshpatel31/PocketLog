@@ -8,15 +8,22 @@ set(BUILD_SHARED_LIBS ON)
 find_package(OpenSSL REQUIRED)
 
 add_executable(pocket_log
-        main.cpp
-        include/dao/transaction.cpp
-        include/transaction.h
-        include/util/date_time.h
+        src/main.cpp
+        include/models/transaction.h
+        include/utils/DateTimeHelper.h
+        include/models/user.h
+        src/config/config.cpp
+        src/models/transaction.cpp
+        include/models/base_model.h
+        include/models/category.h
+        src/models/base_model.cpp
+        include/utils/conversion.h
+        src/utils/DateTimeHelper.cpp
+        src/models/user.cpp
 )
 
 #target_compile_definitions(pocket_log PRIVATE CROW_ENABLE_SSL)
-target_precompile_headers(pocket_log PRIVATE include/transaction.h include/util/date_time.h)
-add_library(transaction include/dao/transaction.cpp)
+target_precompile_headers(pocket_log PRIVATE include/models/transaction.h include/models/user.h include/utils/DateTimeHelper.h)
 
 target_link_libraries(pocket_log PRIVATE
         OpenSSL::SSL

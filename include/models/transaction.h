@@ -15,7 +15,7 @@ enum Category { FOOD, GROCERY, SOCIAL_LIFE, BEVERAGES, CLEANING, KITCHEN, STATIO
 enum AccountType { DEBIT_CARD, CREDIT_CARD, UPI, CASH, WALLET };
 
 
-class Account : BaseModel {
+class Account : public BaseModel {
 private:
     std::string accountName;
     AccountType accountType;
@@ -23,21 +23,23 @@ private:
     float accountBalance;
 
 public:
+    Account() = default;
+
     Account(std::string _accountNumber, AccountType _accountType, std::string _accountName, float _accountBalance);
 
-    std::string getAccountNumber();
+    std::string getAccountNumber() const;
 
-    std::string getAccountType();
+    std::string getAccountType() const;
 
-    std::string getAccountName();
+    std::string getAccountName() const;
 
-    float getAccountBalance();
+    float getAccountBalance() const;
 
     void setAccountBalance(float _balance);
 
     void setAccountNumber(std::string _accountNumber);
 
-    void setAccountType(std::string _accountType);
+    void setAccountType(AccountType _accountType);
 
     void setAccountName(std::string _accountName);
 };
