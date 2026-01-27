@@ -72,16 +72,16 @@ public:
 
     Account getTransactionAccount() const;
 
-    void setTransactionNote(std::string _note);
+    void setTransactionNote(const std::string &_note);
 
-    void setTransactionCategory(Category _category);
+    void setTransactionCategory(const Category &_category);
 
-    void setTransactionDescription(std::string _description);
+    void setTransactionDescription(const std::string &_description);
 
-    void setTransactionAmount(float _amount);
+    void setTransactionAmount(const float &_amount);
 
-    void setTransactionAccount(Account *_transactionAccount);
+    void setTransactionAccount(const Account &_account);
 
-    void setTransactionType(TransactionType _transactionType);
+    void setTransactionType(const TransactionType &_transactionType);
 };
 #endif //POCKETLOG_TRANSACTION_H

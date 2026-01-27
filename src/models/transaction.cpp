@@ -4,6 +4,8 @@
 
 #include "../../include/models/transaction.h"
 
+//          # Account Handelling
+
 Account::Account(std::string _accountNumber, AccountType _accountType, std::string _accountName,
                  float _accountBalance) : BaseModel(random(), random(), random()), accountName(_accountName),
                                           accountBalance(_accountBalance),
@@ -38,15 +40,31 @@ void Account::setAccountBalance(float _accountBalance) { this->accountBalance = 
 void Account::setAccountType(AccountType _accountType) { this->accountType = _accountType; }
 
 
+//      # Transaction Handelling
+
 Transaction::Transaction(TransactionType _transactionType, Category _category, std::string _note,
                          std::string _description, float _amount, Account _account)
     : transactionType(_transactionType), transactionAccount(_account), transactionCategory(_category),
-      transactionDescription(_note), transactionAmount(_amount), transactionNote() {
+      transactionDescription(_description), transactionAmount(_amount), transactionNote(_note) {
 }
 
-Account Transaction::getTransactionAccount() const { return transactionAccount; }
-float Transaction::getTransactionAmount() const { return transactionAmount; }
-std::string Transaction::getTransactionNote() const { return transactionNote; }
-std::string Transaction::getTransactionDescription() const { return transactionDescription; }
-Category Transaction::getTransactionCategory() const { return transactionCategory; }
-TransactionType Transaction::getTransactionType() const { return transactionType; }
+Account Transaction::getTransactionAccount() const { return this->transactionAccount; }
+float Transaction::getTransactionAmount() const { return this->transactionAmount; }
+std::string Transaction::getTransactionNote() const { return this->transactionNote; }
+std::string Transaction::getTransactionDescription() const { return this->transactionDescription; }
+Category Transaction::getTransactionCategory() const { return this->transactionCategory; }
+TransactionType Transaction::getTransactionType() const { return this->transactionType; }
+
+void Transaction::setTransactionType(const TransactionType &_transactionType) {
+    this->transactionType = _transactionType;
+}
+
+void Transaction::setTransactionAccount(const Account &_account) { this->transactionAccount = _account; }
+void Transaction::setTransactionCategory(const Category &_category) { this->transactionCategory = _category; }
+void Transaction::setTransactionNote(const std::string &_note) { this->transactionNote = _note; }
+
+void Transaction::setTransactionDescription(const std::string &_description) {
+    this->transactionDescription = _description;
+}
+
+void Transaction::setTransactionAmount(const float &_amount) { this->transactionAmount = _amount; }

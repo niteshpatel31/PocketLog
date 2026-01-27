@@ -38,16 +38,18 @@ int main(int argc, char *argv[]) {
 
     CROW_ROUTE(app, "/transaction")([]() {
         Account account = transaction.getTransactionAccount();
-        const char *accountDetails = (account.getAccountName() + endl +
-                                      account.getAccountNumber() + endl +
-                                      anyToStr<std::string>(account.getAccountName()) + endl +
-                                      account.getAccountType() + endl).c_str();
+        const auto accountDetails =
+                account.getAccountName() + endl +
+                account.getAccountNumber() + endl +
+                anyToStr<std::string>(account.getAccountName()) + endl +
+                account.getAccountType() + endl;
         return
                 transaction.getTransactionNote() + endl +
                 anyToStr<float>(transaction.getTransactionAmount()) + endl +
-                (char) transaction.getTransactionCategory() + endl +
-                (char) transaction.getTransactionType() + endl +
-                transaction.getTransactionDescription();
+                char(transaction.getTransactionCategory() + 48) + endl +
+                char(transaction.getTransactionType() + 48) + endl +
+                transaction.getTransactionDescription() + endl +
+                +account.getAccountName().c_str();
     });
 
     CROW_ROUTE(app, "/<string>")([](auto a) { return a; });

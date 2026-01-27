@@ -6,7 +6,8 @@
 
 BaseModel::BaseModel() : id(random()),
                          created_at(BaseModel::strToTime(current_time_and_date())),
-                         update_at(BaseModel::strToTime(current_time_and_date())){}
+                         update_at(BaseModel::strToTime(current_time_and_date())) {
+}
 
 BaseModel::BaseModel(uint64_t _id, std::time_t _created_at, std::time_t _update_at) : id(_id), created_at(_created_at),
     update_at(_update_at) {
@@ -30,8 +31,8 @@ const std::string BaseModel::timeToStr(const std::time_t _time) {
 }
 
 const std::time_t BaseModel::strToTime(const std::string _time) {
-    std::tm *tm = nullptr;
+    std::tm tm{}; // creating ptr without memory is worthless leads to -> SIGSEGV 139
     std::istringstream ss{_time};
-    ss >> std::get_time(tm, "%Y-%m-%d %H:%M:%S");
-    return (ss.fail()) ? 0 : std::mktime(tm);
+    ss >> std::get_time(&tm, "%Y-%m-%d %H:%M:%S");
+    return (ss.fail()) ? 0 : std::mktime(&tm);
 }
