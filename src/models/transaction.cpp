@@ -44,8 +44,12 @@ void Account::setAccountType(AccountType _accountType) { this->accountType = _ac
 
 Transaction::Transaction(TransactionType _transactionType, Category _category, std::string _note,
                          std::string _description, float _amount, Account _account)
-    : transactionType(_transactionType), transactionAccount(_account), transactionCategory(_category),
+    : BaseModel(), transactionType(_transactionType),
+      transactionAccount(_account),
+      transactionCategory(_category),
       transactionDescription(_description), transactionAmount(_amount), transactionNote(_note) {
+    this->created_at = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
+    this->update_at = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
 }
 
 Account Transaction::getTransactionAccount() const { return this->transactionAccount; }

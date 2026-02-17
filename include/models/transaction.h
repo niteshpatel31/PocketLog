@@ -45,7 +45,7 @@ public:
 };
 
 
-class Transaction : BaseModel {
+class Transaction : public BaseModel {
 private:
     TransactionType transactionType;
     Category transactionCategory;

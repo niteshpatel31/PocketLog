@@ -32,27 +32,29 @@ int main(int argc, char *argv[]) {
     CROW_ROUTE(app, "/account")([]() {
         return account.getAccountName() + endl +
                account.getAccountNumber() + endl +
-               anyToStr<float>(account.getAccountBalance()) + endl +
+               "Rs." + anyToStr<float>(account.getAccountBalance()) + endl +
                account.getAccountType() + endl;
     });
 
     CROW_ROUTE(app, "/transaction")([]() {
-        Account account = transaction.getTransactionAccount();
+        const Account account = transaction.getTransactionAccount();
         const auto accountDetails =
                 account.getAccountName() + endl +
                 account.getAccountNumber() + endl +
                 anyToStr<std::string>(account.getAccountName()) + endl +
                 account.getAccountType() + endl;
         return
+                anyToStr<uint64_t>(transaction.getId()) + endl +
+                BaseModel::timeToStr(transaction.getCreatedAt()) + endl +
                 transaction.getTransactionNote() + endl +
-                anyToStr<float>(transaction.getTransactionAmount()) + endl +
-                char(transaction.getTransactionCategory() + 48) + endl +
-                char(transaction.getTransactionType() + 48) + endl +
+                "Rs." + anyToStr<float>(transaction.getTransactionAmount()) + endl +
+                static_cast<char>(transaction.getTransactionCategory() + 48) + endl +
+                static_cast<char>(transaction.getTransactionType() + 48) + endl +
                 transaction.getTransactionDescription() + endl +
-                +account.getAccountName().c_str();
+                account.getAccountName();
     });
 
-    CROW_ROUTE(app, "/<string>")([](auto a) { return a; });
+    CROW_ROUTE(app, "/<string>")([](auto a) { return "<h1>" + a + "</h1>";});
 
     app
             .bindaddr(addr)

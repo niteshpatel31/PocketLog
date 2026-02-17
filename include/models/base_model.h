@@ -34,10 +34,10 @@ public:
 
     void touch();
 
-protected:
-    static const std::string timeToStr(std::time_t _time);
+public:
+    static std::string timeToStr(const std::time_t &_time) ;
 
-    static const std::time_t strToTime(std::string _time);
+    static std::time_t strToTime(const std::string &_time);
 };
 
 #endif //POCKETLOG_BASE_MODEL_H
