@@ -1,0 +1,5 @@
+{
+  "_comment": "Place environment-specific overrides here. Keys here take priority over the individual files.",
+  "debug": false,
+  "log_level": "info"
+}

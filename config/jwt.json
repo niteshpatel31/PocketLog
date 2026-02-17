@@ -1,0 +1,8 @@
+{
+  "secret": "change_me_to_a_strong_random_secret",
+  "algorithm": "HS256",
+  "access_token_expiry_sec": 3600,
+  "refresh_token_expiry_sec": 604800,
+  "issuer": "pocket_log",
+  "audience": "pocket_log_clients"
+}

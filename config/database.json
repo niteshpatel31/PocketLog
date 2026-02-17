@@ -2,10 +2,9 @@
   "host": "localhost",
   "port": 5432,
   "name": "pocket_log_db",
-  "user": "pocket_log_user",
-  "password": "changeme",
+  "user": "pocket_user",
+  "password": "change_me_in_production",
   "pool_size": 10,
-  "connection_timeout": 30,
-  "idle_timeout": 600,
-  "ssl_mode": "prefer"
+  "connect_timeout_sec": 30,
+  "ssl": false
 }

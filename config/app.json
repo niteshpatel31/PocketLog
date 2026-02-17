@@ -1,0 +1,10 @@
+{
+  "name": "pocket_log",
+  "version": "1.0.0",
+  "host": "0.0.0.0",
+  "port": 8443,
+  "debug": false,
+  "log_level": "info",
+  "tls_cert": "secret/localhost+3.pem",
+  "tls_key":  "secret/localhost+3-key.pem"
+}
