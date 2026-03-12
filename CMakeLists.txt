@@ -42,7 +42,7 @@ if(NOT JWT_CPP_INCLUDE_DIR)
 endif()
 
 # Boost (uuid, asio used by Crow)
-find_package(Boost REQUIRED COMPONENTS system)
+#find_package(Boost REQUIRED COMPONENTS system)
 
 # spdlog (fast logging)
 find_package(spdlog CONFIG REQUIRED)
@@ -67,7 +67,7 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
         nlohmann_json::nlohmann_json
         OpenSSL::SSL
         OpenSSL::Crypto
-        Boost::system
+#        Boost::system
         spdlog::spdlog
         pthread
 )
