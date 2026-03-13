@@ -53,8 +53,10 @@ file(GLOB_RECURSE SOURCES
 )
 
 add_executable(${PROJECT_NAME} ${SOURCES}
-        include/config/config.h
-        include/config/config.h)
+        src/main.cpp
+        src/database/database.cpp
+        src/database/connection_pool.cpp
+)
 
 target_include_directories(${PROJECT_NAME} PRIVATE
         ${CMAKE_SOURCE_DIR}/include

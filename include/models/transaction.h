@@ -2,8 +2,8 @@
 // Created by sloth on 1/24/26.
 //
 
-#ifndef POCKETLOG_TRANSACTION_H
-#define POCKETLOG_TRANSACTION_H
+#ifndef TRANSACTION_H
+#define TRANSACTION_H
 #include<chrono>
 #include<string>
 #include "../models/base_model.h"
@@ -84,4 +84,4 @@ public:
 
     void setTransactionType(const TransactionType &_transactionType);
 };
-#endif //POCKETLOG_TRANSACTION_H
+#endif TRANSACTION_H

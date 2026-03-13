@@ -1,10 +1,9 @@
 {
   "host": "localhost",
   "port": 5432,
-  "name": "pocket_log_db",
-  "user": "pocket_user",
-  "password": "change_me_in_production",
+  "name": "pocket_log",
+  "user": "sloth",
+  "password": "cflc",
   "pool_size": 10,
-  "connect_timeout_sec": 30,
-  "ssl": false
+  "connect_timeout_sec": 30
 }
